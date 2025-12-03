@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    min-height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Fundo da rua */
+.road-background {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    animation: roadMoving 12s linear infinite;
+    overflow: hidden;
+}
+
+.road-image {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.road-image:first-child {
+    margin-right: -2px;
+}
+
+/* Animação do fundo se movendo infinitamente */
+@keyframes roadMoving {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-49.8%); }
+}
+
+/* Container do corredor */
+.runner-container {
+    position: absolute;
+    left: -10%;
+    top: 75%;
+    transform: translateY(-50%);
+    z-index: 2;
+    animation: moveAcrossScreen 12s linear infinite;
+}
+
+/* Personagem correndo */
+.runner {
+    width: 200px;
+    height: 200px;
+    background-image: url('../imgs/Frame-1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: runningFrames 0.8s steps(6) infinite, bounceRun 0.5s ease-in-out infinite alternate;
+}
+
+/* Animação dos frames de corrida */
+@keyframes runningFrames {
+    0% { background-image: url('../imgs/Frame-1.png'); }
+    16.67% { background-image: url('../imgs/Frame-2.png'); }
+    33.33% { background-image: url('../imgs/Frame-3.png'); }
+    50% { background-image: url('../imgs/Frame-5.png'); }
+    66.67% { background-image: url('../imgs/Frame-6.png'); }
+    83.33% { background-image: url('../imgs/Frame-7.png'); }
+    100% { background-image: url('../imgs/Frame-1.png'); }
+}
+
+/* Animação de movimento vertical para simular corrida */
+@keyframes bounceRun {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+/* Animação de movimento horizontal contínuo */
+@keyframes moveAcrossScreen {
+    0% { left: -10%; }
+    100% { left: 110%; }
+}
+
+/* Mensagem de parabéns */
+.birthday-message {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 3;
+    animation: fadeInUp 2s ease-out, float 3s ease-in-out infinite;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+    animation: rainbow 2s linear infinite;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Animação de cores do arco-íris */
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    16.66% { color: #ff8c00; }
+    33.33% { color: #ffd700; }
+    50% { color: #00ff00; }
+    66.66% { color: #00bfff; }
+    83.33% { color: #8a2be2; }
+    100% { color: #ff0000; }
+}
+
+/* Balões */
+.balloons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.balloon {
+    font-size: 2.5rem;
+    animation: floatBalloon 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+.balloon:nth-child(1) { animation-delay: 0s; }
+.balloon:nth-child(2) { animation-delay: 0.5s; }
+.balloon:nth-child(3) { animation-delay: 1s; }
+
+@keyframes floatBalloon {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+/* Animação de entrada da mensagem */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .runner {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .runner-container {
+        animation: moveAcrossScreen 9s linear infinite;
+        top: 70%;
+    }
+    
+    .road-background {
+        overflow: hidden;
+    }
+    
+    .road-image {
+        object-fit: cover;
+        object-position: center bottom;
+    }
+    
+
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .runner {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .runner-container {
+        top: 75%;
+        animation: moveAcrossScreen 8s linear infinite;
+    }
+    
+    .road-background {
+        overflow: hidden;
+        height: 100vh;
+    }
+    
+    .road-image {
+        object-fit: cover;
+        object-position: center bottom;
+        min-height: 100vh;
+    }
+    
+    .balloon {
+        font-size: 2rem;
+    }
+}
