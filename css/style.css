@@ -9,6 +9,9 @@ body {
     overflow: hidden;
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
     min-height: 100vh;
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -27,6 +30,8 @@ body {
     display: flex;
     animation: roadMoving 12s linear infinite;
     overflow: hidden;
+    font-size: 0;
+    line-height: 0;
 }
 
 .road-image {
@@ -34,16 +39,13 @@ body {
     height: 100%;
     object-fit: cover;
     flex-shrink: 0;
-}
-
-.road-image:first-child {
-    margin-right: -2px;
+    display: block;
 }
 
 /* Animação do fundo se movendo infinitamente */
 @keyframes roadMoving {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-49.8%); }
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
 }
 
 /* Container do corredor */
@@ -54,6 +56,8 @@ body {
     transform: translateY(-50%);
     z-index: 2;
     animation: moveAcrossScreen 12s linear infinite;
+    contain: layout;
+    will-change: transform;
 }
 
 /* Personagem correndo */
@@ -64,17 +68,29 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    animation: runningFrames 0.8s steps(6) infinite, bounceRun 0.5s ease-in-out infinite alternate;
+    animation: runningFrames 0.48s steps(6, end) infinite, bounceRun 0.4s ease-in-out infinite alternate;
+    filter: brightness(1.0) contrast(1.0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    will-change: background-image;
+    contain: strict;
+    -webkit-font-smoothing: subpixel-antialiased;
+    image-rendering: -webkit-optimize-contrast;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
 }
 
 /* Animação dos frames de corrida */
 @keyframes runningFrames {
     0% { background-image: url('../imgs/Frame-1.png'); }
-    16.67% { background-image: url('../imgs/Frame-2.png'); }
-    33.33% { background-image: url('../imgs/Frame-3.png'); }
+    16.666% { background-image: url('../imgs/Frame-2.png'); }
+    33.333% { background-image: url('../imgs/Frame-3.png'); }
     50% { background-image: url('../imgs/Frame-5.png'); }
-    66.67% { background-image: url('../imgs/Frame-6.png'); }
-    83.33% { background-image: url('../imgs/Frame-7.png'); }
+    66.666% { background-image: url('../imgs/Frame-6.png'); }
+    83.333% { background-image: url('../imgs/Frame-7.png'); }
+    99.999% { background-image: url('../imgs/Frame-7.png'); }
     100% { background-image: url('../imgs/Frame-1.png'); }
 }
 
@@ -214,6 +230,18 @@ body {
     .runner {
         width: 120px;
         height: 120px;
+        filter: brightness(1.1) contrast(1.1) saturate(1.1);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        image-rendering: -webkit-optimize-contrast;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        animation-duration: 0.36s !important;
+        animation-timing-function: linear !important;
+        contain: strict;
+        -webkit-font-smoothing: subpixel-antialiased;
     }
     
     .runner-container {
