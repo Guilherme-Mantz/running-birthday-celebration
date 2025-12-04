@@ -28,12 +28,10 @@ body {
     height: 100%;
     z-index: 1;
     display: flex;
-    animation: roadMoving 8s linear infinite;
+    animation: roadMoving 10s linear infinite;
     overflow: hidden;
     font-size: 0;
     line-height: 0;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
 }
 
 .road-image {
@@ -57,10 +55,7 @@ body {
     top: 75%;
     transform: translateY(-50%);
     z-index: 2;
-    animation: moveAcrossScreen 8s linear infinite;
-    contain: layout;
-    will-change: transform;
-    -webkit-transform: translateY(-50%) translate3d(0, 0, 0);
+    animation: moveAcrossScreen 10s linear infinite;
 }
 
 /* Personagem correndo */
@@ -71,18 +66,11 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    animation: runningFrames 1.2s steps(6, end) infinite, bounceRun 0.6s ease-in-out infinite alternate;
-    filter: brightness(1.0) contrast(1.0);
+    animation: runningFrames 0.9s steps(6) infinite, bounceRun 0.5s ease-in-out infinite alternate;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    transform: translateZ(0);
     will-change: background-image;
-    contain: strict;
-    -webkit-font-smoothing: subpixel-antialiased;
-    image-rendering: -webkit-optimize-contrast;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
 }
 
 /* Animação dos frames de corrida */
@@ -233,23 +221,16 @@ body {
     .runner {
         width: 120px;
         height: 120px;
-        filter: brightness(1.1) contrast(1.1) saturate(1.1);
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        image-rendering: -webkit-optimize-contrast;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        animation-duration: 1.0s !important;
-        animation-timing-function: steps(6, end) !important;
-        contain: strict;
-        -webkit-font-smoothing: subpixel-antialiased;
+        animation-duration: 0.7s !important;
     }
     
     .runner-container {
         top: 75%;
-        animation: moveAcrossScreen 5s linear infinite;
+        animation: moveAcrossScreen 8s linear infinite;
+    }
+    
+    .road-background {
+        animation-duration: 8s !important;
     }
     
     .runner-container {
