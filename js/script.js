@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (clickCount === 2) {
             // Efeito especial de turbo
-            runner.style.animation = 'runningFrames 0.2s steps(6, end) infinite, bounceRun 0.15s ease-in-out infinite alternate';
+            runner.style.animation = 'runningFrames 0.4s steps(6, end) infinite, bounceRun 0.2s ease-in-out infinite alternate';
             
             // Volta ao normal após 3 segundos
             setTimeout(() => {
-                runner.style.animation = 'runningFrames 0.48s steps(6, end) infinite, bounceRun 0.4s ease-in-out infinite alternate';
+                runner.style.animation = 'runningFrames 1.2s steps(6, end) infinite, bounceRun 0.6s ease-in-out infinite alternate';
             }, 3000);
             
             clickCount = 0;

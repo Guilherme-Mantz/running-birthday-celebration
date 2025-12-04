@@ -28,10 +28,12 @@ body {
     height: 100%;
     z-index: 1;
     display: flex;
-    animation: roadMoving 12s linear infinite;
+    animation: roadMoving 8s linear infinite;
     overflow: hidden;
     font-size: 0;
     line-height: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
 }
 
 .road-image {
@@ -55,9 +57,10 @@ body {
     top: 75%;
     transform: translateY(-50%);
     z-index: 2;
-    animation: moveAcrossScreen 12s linear infinite;
+    animation: moveAcrossScreen 8s linear infinite;
     contain: layout;
     will-change: transform;
+    -webkit-transform: translateY(-50%) translate3d(0, 0, 0);
 }
 
 /* Personagem correndo */
@@ -68,7 +71,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    animation: runningFrames 0.48s steps(6, end) infinite, bounceRun 0.4s ease-in-out infinite alternate;
+    animation: runningFrames 1.2s steps(6, end) infinite, bounceRun 0.6s ease-in-out infinite alternate;
     filter: brightness(1.0) contrast(1.0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -202,7 +205,7 @@ body {
     }
     
     .runner-container {
-        animation: moveAcrossScreen 9s linear infinite;
+        animation: moveAcrossScreen 6s linear infinite;
         top: 70%;
     }
     
@@ -238,10 +241,15 @@ body {
         image-rendering: -webkit-optimize-contrast;
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
-        animation-duration: 0.36s !important;
-        animation-timing-function: linear !important;
+        animation-duration: 1.0s !important;
+        animation-timing-function: steps(6, end) !important;
         contain: strict;
         -webkit-font-smoothing: subpixel-antialiased;
+    }
+    
+    .runner-container {
+        top: 75%;
+        animation: moveAcrossScreen 5s linear infinite;
     }
     
     .runner-container {
